@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { getSmurfs, addSmurf } from "../actions";
+import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
 
 class App extends Component {
   state = {
@@ -19,7 +19,7 @@ class App extends Component {
   handleChange = e => {
     e.persist();
     let value = e.target.value;
-    if (e.target.name === "age" || e.target.name === "height") {
+    if (e.target.name === "age") {
       value = parseInt(value, 10);
     }
     this.setState(prevState => ({
@@ -33,6 +33,11 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addSmurf(this.state.smurf)
+  }
+
+  handleDelete = (e, id) => {
+    e.preventDefault();
+    this.props.deleteSmurf(id)
   }
 
   render() {
@@ -64,15 +69,20 @@ class App extends Component {
           <button> Add Smurf </button>
         </form>
 
-        {this.props.smurfs.map(smurf => (
-          <div className="smurf-container" key={smurf.name}>
-            {smurf.name}
-            <hr />
-            Age: {smurf.age}
-            <hr />
-            Height: {smurf.height}
-          </div>
-        ))}
+        <div className="smurfs-container">
+          {this.props.smurfs.map(smurf => (
+            <div className="smurf-container" key={smurf.name}>
+              {smurf.name}
+              <hr />
+              Age: {smurf.age}
+              <hr />
+              Height: {smurf.height}
+              <hr/>
+              <button onClick={e => this.handleDelete(e, smurf.id)}> delete </button>
+            </div>
+          ))}
+        </div>
+
       </div>
     );
   }
@@ -85,5 +95,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, addSmurf }
+  { getSmurfs, addSmurf, deleteSmurf }
 )(App);

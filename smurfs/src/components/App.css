@@ -44,6 +44,21 @@ button {
   margin: 50px auto;
   border: 1px solid black;
   padding: 20px;
+  background-color: rgba(146, 224, 235, 0.884);
+}
+
+.smurf-container button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.smurfs-container {
+  border: 2px solid black;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @keyframes App-logo-spin {

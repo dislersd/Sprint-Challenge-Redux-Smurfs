@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf, deleteSmurf } from "../actions";
+import Smurf from './Smurf';
 
 class App extends Component {
   state = {
@@ -9,7 +10,8 @@ class App extends Component {
       name: "",
       age: "",
       height: ""
-    }
+    },
+    update: false
   };
 
   componentDidMount() {
@@ -35,9 +37,11 @@ class App extends Component {
     this.props.addSmurf(this.state.smurf)
   }
 
-  handleDelete = (e, id) => {
+
+
+  toggleUpdate = e => {
     e.preventDefault();
-    this.props.deleteSmurf(id)
+    this.setState({ update: !this.state.update })
   }
 
   render() {
@@ -71,15 +75,7 @@ class App extends Component {
 
         <div className="smurfs-container">
           {this.props.smurfs.map(smurf => (
-            <div className="smurf-container" key={smurf.name}>
-              {smurf.name}
-              <hr />
-              Age: {smurf.age}
-              <hr />
-              Height: {smurf.height}
-              <hr/>
-              <button onClick={e => this.handleDelete(e, smurf.id)}> delete </button>
-            </div>
+            <Smurf key={smurf.id} {...smurf}/>
           ))}
         </div>
 

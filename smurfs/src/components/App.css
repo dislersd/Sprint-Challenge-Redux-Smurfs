@@ -47,8 +47,15 @@ button {
   background-color: rgba(146, 224, 235, 0.884);
 }
 
-.smurf-container button {
+.delete-button {
   background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.update-button {
+  background-color: green;
   color: white;
   border: none;
   cursor: pointer;

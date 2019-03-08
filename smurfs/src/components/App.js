@@ -15,8 +15,12 @@ class App extends Component {
     return (
       <div className="App">
       {this.props.smurfs.map( smurf => (
-        <div>
+        <div className='smurf-container' key={smurf.name}>
           {smurf.name}
+          <hr/>
+          Age: {smurf.age}
+          <hr/>
+          Height: {smurf.height}
         </div>
       ))}
       </div>

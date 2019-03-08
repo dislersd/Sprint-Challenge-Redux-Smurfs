@@ -1,5 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+
+input {
+  margin: 10px 0;
+}
+
+button {
+  margin: 10px 0;
+}
+
 .App {
   text-align: center;
+  background-image: linear-gradient(rgb(170, 217, 255), rgb(132, 198, 252), rgb(59, 148, 250));
+  padding: 50px;
 }
 
 .App-logo {
@@ -25,7 +42,7 @@
 .smurf-container {
   width: 200px;
   margin: 50px auto;
-  border: 1px dotted black;
+  border: 1px solid black;
   padding: 20px;
 }
 

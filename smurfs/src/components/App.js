@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
+import { getSmurfs, addSmurf } from "../actions";
 
 class App extends Component {
   state = {
@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="name"
@@ -85,5 +85,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, addSmurf }
 )(App);
